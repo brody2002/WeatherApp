@@ -13,7 +13,7 @@
                 <img src="weather-app-img/images/search.png">
             </button>
         </div>
-        <div class="error">
+        <div class="not-found">
             <p>Invalid city name</p>
         </div>
         <div class="weather">
@@ -38,6 +38,9 @@
             </div>
         </div>
     </div>
+
+
+
     <script>
         const apiKey = "7503413bf7b87ad45b7be1653a0c8fbc";
         const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&q=";
@@ -45,12 +48,24 @@
         const searchBox = document.querySelector(".search input");
         const searchButton = document.querySelector(".search button");
         const weather_icon = document.querySelector(".Weather-icon");
+
+        const weather_card = document.querySelector(".weather");
+        const weather_details = document.querySelector(".weather details");
+
+
         async function checkWeather(city){
             const responce = await fetch(apiUrl + city + "&appid=" + apiKey);
 
+            document.querySelector(".weather").style.display = "none";
+            document.querySelector(".weather").classList.add('fadeIn');
+
+
             if(responce.status == 404){
-                document.querySelector(".error").style.display = "block";
+                document.querySelector(".card").style.height = '160px';
+                document.querySelector('.not-found').classList.add('fadeIn');
+                document.querySelector('.not-found').style.display = 'block';
                 document.querySelector(".weather").style.display = "none";
+                 
             }else{
                 var data = await responce.json();
 
@@ -83,9 +98,11 @@
                     weather_icon.src = "weather-app-img/images/snow.png";
                 }
                 
+                document.querySelector(".card").style.height = "600px";
+                document.querySelector(".weather").classList.add('fadeIn');
+                document.querySelector(".not-found").style.display = "none";
                 document.querySelector(".weather").style.display = "block";
-
-                document.querySelector(".error").style.display = "none";
+                
             }
 
             

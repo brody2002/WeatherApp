@@ -18,6 +18,10 @@ body{
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    
+    overflow: hidden;  
+    height: 130px; 
+    transition: 0.6s ease-out;
 }
 .search{
     width: 100%;
@@ -46,7 +50,14 @@ body{
     width: 60px;
     height: 60px;
     cursor: pointer;
+    transition: 0.4s ease;
 }
+
+.search button:hover{
+    color: #fff;
+    background: #c3f3ff;
+}
+
 .search button img{
     width: 16px;
 }
@@ -86,14 +97,45 @@ body{
     font-size: 28px;
     margin-top: -6px;
 }
-.weather{
-    display: none;
+
+
+
+
+.not-found{
+    text-align: center;
     
-}
-.error{
-    text-align: left;
-    margin-left: 10px;
     font-size: 14px;
-    margin-top: 10px;
-    display: none;
+    margin-top: 15px;
+    scale: 0;
+    opacity: 0;
+}
+
+.not-found img{
+    width: 70%;
+}
+
+.not-found p{
+    color: #06283D;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.weather{
+    scale: 0;
+    opacity: 0;
+    /* display: none; */
+}
+
+
+.fadeIn{
+    animation: 0.5s fadeIn forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }
